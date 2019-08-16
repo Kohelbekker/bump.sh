@@ -1,7 +1,21 @@
 #!/usr/bin/bash
 
-echo  hello
+  if  [[ $# -lt 1 ]]; then
+    echo "FUCK" #exit 0
+  fi
 
+  case "$1" in
+    -r|--ruby)
+      CMD="bump $variable"
+      ;;
+    -j|--js)
+      CMD="yarn version --$variable"
+      ;;
+    -g|--go)
+        CMD=""
+      ;;
+  esac
+exit
 ## gem install bump
 ## git config --global user.name "  Kite Bot"
 ## git config --global user.email "kite-bot@heliostech.fr"
