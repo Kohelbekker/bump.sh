@@ -1,10 +1,9 @@
-  install bump
-  git config --global user.name "  Kite Bot"
-  git config --global user.email "kite-bot@heliostech.fr"
-  git remote add authenticated-origin https://kite-bot:$GITHUB_API_KEY@github.com/${DRONE_REPO}
-  git fetch authenticated-origin
-  curl -sL https://deb.nodesource.com/setup_10.x | bash -
-  apt-get update && apt-get install -y nodejs
+t config --global user.name "  Kite Bot"
+    git config --global user.email "kite-bot@heliostech.fr"
+    git remote add authenticated-origin https://kite-bot:$GITHUB_API_KEY@github.com/${DRONE_REPO}
+    git fetch authenticated-origin
+    curl -sL https://deb.nodesource.com/setup_10.x | bash -
+    apt-get update && apt-get install -y nodejs
 
   scan_git() {
       if git log --oneline -n 1 HEAD | grep -qi 'patch'; then
@@ -17,18 +16,18 @@
      fi
   }
   scan_git()
-
-  go get github.com/Clever/gitsem
   
   if -n variable; then
     case "$1" in
       -r|--ruby)
+        gem install bump
         CMD="bump $variable"
         ;;
       -j|--js)
         CMD="yarn version --$variable"
         ;;
       -g|--go)
+        go get github.com/Clever/gitsem
         CMD="gitsem $variable"
         ;;
     esac
